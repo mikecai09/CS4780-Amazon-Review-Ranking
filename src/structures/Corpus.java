@@ -18,6 +18,10 @@ public class Corpus {
 		return m_collection.size();
 	}
 	
+	public HashMap<String, Integer> getDictionary() {
+		return m_dictionary;	
+	}
+	
 	public int getDictionarySize() {
 		return m_dictionary.size();	
 	}
@@ -29,6 +33,10 @@ public class Corpus {
 		 * INSTRUCTOR'S NOTE: based on the BoW representation of this document, you can update the m_dictionary content
 		 * to maintain some global statistics here 
 		 */
+//		HashMap<String,Integer> m_BoW = doc.getBoW();
+//		for(String token:m_BoW.keySet()) {
+//			m_dictionary.put(token, m_dictionary.getOrDefault(token, 0)+m_BoW.get(token));
+//		}
 	}
 	
 	public ReviewDoc getDoc(int index) {

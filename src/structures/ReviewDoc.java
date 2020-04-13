@@ -11,12 +11,16 @@ import java.util.HashMap;
  * Basic data structure for a Yelp review document
  */
 public class ReviewDoc {
-	String m_author; //author name
-	String m_docID; //unique review id
-	double m_rating; //numerical rating of the review
-	String m_content; //review text content
-	Date m_date; //date when the review was published
-	String m_authorLocation; //author's registered location
+	int m_image; //Image
+	double m_overall; //numerical rating of the review
+	String m_vote; //vote
+	boolean m_verified;
+	String m_reviewerID;
+	String m_asin;
+	String m_reviewerName;
+	String m_reviewerText;
+	String m_summary;
+	long m_unixreviewtime;
 	
 	/**
 	 * INSTRUCTOR'S NOTE: Your bag-of-word representation of this document
@@ -24,63 +28,103 @@ public class ReviewDoc {
 	 */
 	HashMap<String, Integer> m_BoW; //word -> frequency
 	
-	public ReviewDoc(String docID, String author) {
-		m_docID = docID;
-		m_author = author;
+	public ReviewDoc(String asin, String ID) {
+		m_asin = asin;
+		m_reviewerID = ID;
 	}
-	
-	public void setAuthor(String author) {
-		m_author = author;
+
+	public int getImage() {
+		return m_image;
 	}
-	
-	public String getAuthor() {
-		return m_author;
+
+	public void setImage(int m_image) {
+		this.m_image = m_image;
 	}
-	
-	public void setDocID(String docID) {
-		m_docID = docID;
+
+	public double getOverall() {
+		return m_overall;
 	}
-	
-	public String getDocID() {
-		return m_docID;
+
+	public void setOverall(double m_overall) {
+		this.m_overall = m_overall;
 	}
-	
-	public void setRating(double rating) {
-		m_rating = rating;
+
+	public String getVote() {
+		return m_vote;
 	}
-	
-	public double getRating() {
-		return m_rating;
+
+	public void setVote(String m_vote) {
+		this.m_vote = m_vote;
 	}
-	
-	public void setContent(String content) {
-		m_content = content;
+
+	public boolean isVerified() {
+		return m_verified;
 	}
-	
-	public String getContent() {
-		return m_content;
+
+	public void setVerified(boolean m_verified) {
+		this.m_verified = m_verified;
 	}
-	
-	public void setDate(Date date) {
-		m_date = date;
+
+	public String getReviewerID() {
+		return m_reviewerID;
 	}
-	
-	public Date getDate() {
-		return m_date;
+
+	public void setReviewerID(String m_reviewerID) {
+		this.m_reviewerID = m_reviewerID;
 	}
-	
-	public void setAuthorLocation(String authorLoc) {
-		m_authorLocation = authorLoc;
+
+	public String getAsin() {
+		return m_asin;
 	}
-	
-	public String getAuthorLocation() {
-		return m_authorLocation;
+
+	public void setAsin(String m_asin) {
+		this.m_asin = m_asin;
+	}
+
+	public String getReviewerName() {
+		return m_reviewerName;
+	}
+
+	public void setReviewerName(String m_reviewerName) {
+		this.m_reviewerName = m_reviewerName;
+	}
+
+	public String getReviewerText() {
+		return m_reviewerText;
+	}
+
+	public void setReviewerText(String m_reviewerText) {
+		this.m_reviewerText = m_reviewerText;
+	}
+
+	public String getSummary() {
+		return m_summary;
+	}
+
+	public void setSummary(String m_summary) {
+		this.m_summary = m_summary;
+	}
+
+	public long getUnixreviewtime() {
+		return m_unixreviewtime;
+	}
+
+	public void setUnixreviewtime(long m_unixreviewtime) {
+		this.m_unixreviewtime = m_unixreviewtime;
+	}
+
+	public HashMap<String, Integer> getBoW(){
+		return m_BoW;
 	}
 	
 	public void setBoW(String[] tokens) {
 		/**
 		 * INSTRUCTOR'S NOTE: please construct your bag-of-word representation of this document based on the processed document content
 		 */
+		m_BoW = new HashMap<>();
+		for(String token:tokens) {
+			m_BoW.put(token, m_BoW.getOrDefault(token, 0)+1);
+		}
 	}
 	
 	//check whether the document contains the query term
