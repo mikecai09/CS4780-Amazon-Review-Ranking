@@ -2,151 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a654fd7-e56e-4bbc-a3d8-4852ab3d9dc2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/amazon/analyzer/DocAnalyzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/analyzer/TextAnalyzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/Indexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/ResultDoc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/SearchQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/SearchResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/Searcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/SpecialAnalyzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/index/Stopwords.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/amazon/searcher/DocSearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CS4780.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS4780.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/0qnMSq3gYhGDesZKxNgAkQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/3OLZOlqgOXdqY0uwxcOTfw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/3VCZ21-DIw7voVexDMXDSA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/4lgk5AJvmoXPrfSlCyjiQg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/6CvMYmV0Uw4Y4G7NpvTgfg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/7lnOgOMd7zys3bFfWY_jIw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/7pezxyAK-7l5Yfr7W7fFQQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/8d-RAa59tgV06VRa5SOe9A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/8y00IHK9sbA1Zhl2E9hmpA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/9GVazUhx0dYB-_H0hlgB5w.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/9IRdWhDNo2T6vyMLwrQdMw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/9N0YqwhE1qwU4OmhzwGjtA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/A9xPHLcWtRgK6Mf4-ksBrw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/AZrLjmV0A2TzOCkZ6CU-Fg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/CvmAN25laBbwZTqmlEAR1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/aq_UTxlYvMNEN-urxbUddA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/b7jDtbG7UloYasZ9sVXHWg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/d5YWKrP-zG74nqOYzHn7Zg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/dCw8uBtwnJFKwMnASlZLzg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/20/dlDEuDIvZI6I0cGZy4jIYg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/0qnMSq3gYhGDesZKxNgAkQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/3OLZOlqgOXdqY0uwxcOTfw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/3VCZ21-DIw7voVexDMXDSA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/4lgk5AJvmoXPrfSlCyjiQg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/6CvMYmV0Uw4Y4G7NpvTgfg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/7lnOgOMd7zys3bFfWY_jIw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/7pezxyAK-7l5Yfr7W7fFQQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/8d-RAa59tgV06VRa5SOe9A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/8y00IHK9sbA1Zhl2E9hmpA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/9GVazUhx0dYB-_H0hlgB5w.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/9IRdWhDNo2T6vyMLwrQdMw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/9N0YqwhE1qwU4OmhzwGjtA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/A9xPHLcWtRgK6Mf4-ksBrw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/AZrLjmV0A2TzOCkZ6CU-Fg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/CvmAN25laBbwZTqmlEAR1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/EsypDkgdOEurddgPFyhCqw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/ExDgGmuZJOsGXAzSIM1jtA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/F_YQ3BrfHSMmKvJ_nqyYAA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/FtRrpU4mSRAkLNmLMGQ_Dg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/Is7TtkCabINOEq7e-TiWXA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/J_rNhtb144k_fW50UQ7_lg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/NQqSTW5c6bnsfVZaZAON1g.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/Nl8kv24kLtlGn5aqoggu8A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/Q6nXAEw3UuAVFSztE4lPnA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/aq_UTxlYvMNEN-urxbUddA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/b7jDtbG7UloYasZ9sVXHWg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/d5YWKrP-zG74nqOYzHn7Zg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/dCw8uBtwnJFKwMnASlZLzg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/dlDEuDIvZI6I0cGZy4jIYg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/e1grgYnCxbue-tU5Gf6IlQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/gB-0XpxMvsO04AMedpQs1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/gQCn4Gv-4_UUUFwpo-zHvA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/kO4SS2cYzFyUM04EUSGMpg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/l2rPzn4wx2UhRaF5LKVJwA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/lAPSCXomy_O3etWLxuQNUQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/okChDSotPCRtJlQVzlnw1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/p8Uu-CYOUaISZT4w6OTNrQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/pVEyB1BxiZkJUeoqHG3ehA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/rzHGofdCbaskvo2SzC6Vpg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/40/s46fIpN6IbmMxKKkyNGBGw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/0qnMSq3gYhGDesZKxNgAkQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/3OLZOlqgOXdqY0uwxcOTfw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/3VCZ21-DIw7voVexDMXDSA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/4lgk5AJvmoXPrfSlCyjiQg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/6CvMYmV0Uw4Y4G7NpvTgfg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/7lnOgOMd7zys3bFfWY_jIw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/7pezxyAK-7l5Yfr7W7fFQQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/8d-RAa59tgV06VRa5SOe9A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/8y00IHK9sbA1Zhl2E9hmpA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/9GVazUhx0dYB-_H0hlgB5w.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/9IRdWhDNo2T6vyMLwrQdMw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/9N0YqwhE1qwU4OmhzwGjtA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/A9xPHLcWtRgK6Mf4-ksBrw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/AZrLjmV0A2TzOCkZ6CU-Fg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/CvmAN25laBbwZTqmlEAR1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/EsypDkgdOEurddgPFyhCqw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/ExDgGmuZJOsGXAzSIM1jtA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/F_YQ3BrfHSMmKvJ_nqyYAA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/FtRrpU4mSRAkLNmLMGQ_Dg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/Is7TtkCabINOEq7e-TiWXA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/J_rNhtb144k_fW50UQ7_lg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/NQqSTW5c6bnsfVZaZAON1g.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/Nl8kv24kLtlGn5aqoggu8A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/Q6nXAEw3UuAVFSztE4lPnA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/SlBFeVyO-ewdi6cC-fVVPA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/SmYVU8I4ukBd1zJWdIxPcA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/UKtzNIgmUd-9TljoI2wLiA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/UTMAQluppsu2ZDDaKKZyIQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/Ud3xHfA2EP5BsmugEHwrhQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/VAi6XF1fbsx6LOjpLkPuTg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/WU_dFObt9VxHMcS1Eu32iQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/XJf0g9xKrMM-8uu1Mj4qsA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/Z04-eU8EKLvnEsdX9ngqVQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/aq_UTxlYvMNEN-urxbUddA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/b7jDtbG7UloYasZ9sVXHWg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/d5YWKrP-zG74nqOYzHn7Zg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/dCw8uBtwnJFKwMnASlZLzg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/dlDEuDIvZI6I0cGZy4jIYg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/e1grgYnCxbue-tU5Gf6IlQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/gB-0XpxMvsO04AMedpQs1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/gQCn4Gv-4_UUUFwpo-zHvA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/kO4SS2cYzFyUM04EUSGMpg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/l2rPzn4wx2UhRaF5LKVJwA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/lAPSCXomy_O3etWLxuQNUQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/okChDSotPCRtJlQVzlnw1Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/p8Uu-CYOUaISZT4w6OTNrQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/pVEyB1BxiZkJUeoqHG3ehA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/rzHGofdCbaskvo2SzC6Vpg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/s46fIpN6IbmMxKKkyNGBGw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/sWXT0sNodEnxZjziB3saZQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/t9wUtmbqYZ2jZf5GcbOKnQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/tDpy78JYTqrClowdaJc6kA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/tEn9OKYKMVtVWiBP3NmcEg.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/tNnNr1AJf6ThLsSnPdd3xA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/vTKSLe9DwRelou9wtcmHUA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/y5EMn3YMd9tmUJ-guKS4eQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/z5HiFhPj93NYrsrHJ86Wnw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/z90atI98B7g1UvWn_i9ViQ.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/zdzVyuYhpF5R2oiLuL0Rrw.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/yelp/60/zkjcbVWPZHRzYdVzTIOA_Q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/analyzer/DocAnalyzer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/analyzer/TextAnalyzer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/Indexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/ResultDoc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/SearchQuery.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/SearchResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/Searcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/SpecialAnalyzer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/index/Stopwords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/virginia/cs/searcher/DocSearcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/JSONObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/JSONObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runners/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runners/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structures/Corpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structures/Corpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structures/ReviewDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structures/ReviewDoc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,9 +28,12 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="runners.Main" />
       <module name="CS4780" />
       <extension name="coverage">
@@ -184,11 +46,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -207,29 +64,41 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#Project_Structure" timestamp="1586743808335">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1586743808335" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586743667496">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586743667496" />
     <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1586737712092">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1586737712092" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1586743529716">
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586743664614">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586743529716" />
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1586743664614" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1586743827033">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586743827033" />
     <state width="1358" height="192" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" timestamp="1586484252065" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1586743529714">
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1586743827026">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586743529714" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586743827026" />
     <state width="1358" height="192" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" timestamp="1586484252063" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1586743529712">
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1586743827024">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586743529712" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586743827024" />
     <state width="1358" height="192" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" timestamp="1586484252060" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1586743529715">
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1586743827032">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586743529715" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586743827032" />
     <state width="1358" height="192" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" timestamp="1586484252064" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1586735668861">
       <screen x="0" y="0" width="1440" height="900" />

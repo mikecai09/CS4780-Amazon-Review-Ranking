@@ -26,16 +26,17 @@ public class DocAnalyzer extends TextAnalyzer {
 		return m_corpus;
 	}
 	
-	// sample code for demonstrating how to recursively load files in a directory 
-	public void LoadDirectory(String folder, String suffix) {
+	// sample code for demonstrating how to recursively load files in a directory
+	// Adding a specific asin number that we are examining
+	public void LoadDirectory(String folder, String suffix, String asin) {
 		File dir = new File(folder);
 		int size = m_corpus.getCorpusSize();
 		for (File f : dir.listFiles()) {
 			if (f.isFile() && f.getName().endsWith(suffix)){
-				analyzeDocument(f.getAbsolutePath());
+				analyzeDocument(f.getAbsolutePath(), asin);
 			}
 			else if (f.isDirectory())
-				LoadDirectory(f.getAbsolutePath(), suffix);
+				LoadDirectory(f.getAbsolutePath(), suffix, asin);
 		}
 		size = m_corpus.getCorpusSize() - size;
 		System.out.println("Loading " + size + " review documents from " + folder);
@@ -65,7 +66,7 @@ public class DocAnalyzer extends TextAnalyzer {
 		}
 	}
 	
-	void analyzeDocument(String path) {
+	void analyzeDocument(String path, String asin) {
 		BufferedReader br;
 		String sCurrentLine;
 		try {
@@ -74,46 +75,42 @@ public class DocAnalyzer extends TextAnalyzer {
 			while ((sCurrentLine = br.readLine()) != null) {
 				try {
 					JSONObject review = new JSONObject(sCurrentLine);
-					ReviewDoc doc = new ReviewDoc(review.getString("asin"), review.getString("reviewerID"));
-					try{
-						doc.setImage(review.getStringArray("image").length);
-					}
-					catch (JSONException e){
-						doc.setImage(0);
-					}
-//					System.out.println(doc.getReviewerID());
-					doc.setOverall(review.getDouble("overall"));
-					try {
-						doc.setVote(review.getString("vote"));
-					}
-					catch(JSONException e){
-						doc.setVote("");
-					}
-					doc.setVerified(review.getBoolean("verified"));
-					try{
-						doc.setReviewerName(review.getString("reviewerName"));
-					}
-					catch (JSONException e){
-						doc.setReviewerName("");
-					}
-					try {
-						doc.setReviewerText(review.getString("reviewerText"));
-					}
-					catch (JSONException e){
-						doc.setReviewerText("");
-					}
-					try{
-						doc.setSummary(review.getString("summary"));
-					}
-					catch (JSONException e){
-						doc.setSummary("");
-					}
-					doc.setUnixreviewtime(review.getLong("unixReviewTime"));
+					if(review.getString("asin").equals(asin)) {
+						ReviewDoc doc = new ReviewDoc(review.getString("asin"), review.getString("reviewerID"));
+						try {
+							doc.setImage(review.getStringArray("image").length);
+						} catch (JSONException e) {
+							doc.setImage(0);
+						}
+						doc.setOverall(review.getDouble("overall"));
+						try {
+							doc.setVote(review.getString("vote"));
+						} catch (JSONException e) {
+							doc.setVote("");
+						}
+						doc.setVerified(review.getBoolean("verified"));
+						try {
+							doc.setReviewerName(review.getString("reviewerName"));
+						} catch (JSONException e) {
+							doc.setReviewerName("");
+						}
+						try {
+							doc.setReviewerText(review.getString("reviewerText"));
+							doc.setBoW(tokenize(review.getString("reviewerText")));
+						} catch (JSONException e) {
+							doc.setReviewerText("");
+						}
+						try {
+							doc.setSummary(review.getString("summary"));
+						} catch (JSONException e) {
+							doc.setSummary("");
+						}
+						System.out.println(doc.getSummary());
 
-//					doc.setBoW(tokenize(content));
+						doc.setUnixreviewtime(review.getLong("unixReviewTime"));
 
-					m_corpus.addDoc(doc);
-
+						m_corpus.addDoc(doc);
+					}
 				}
 				catch(JSONException e){
 					e.printStackTrace();

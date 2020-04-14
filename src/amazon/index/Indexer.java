@@ -49,10 +49,8 @@ public class Indexer {
     /**
      * @param indexPath
      *            Where to create the index
-     * @param prefix
+     * @param corpus
      *            The prefix of all the paths in the fileList
-     * @param fileList
-     *            Each line is a path to a document
      * @throws IOException
      */
     public static void index(String indexPath, Corpus corpus)
@@ -72,6 +70,7 @@ public class Indexer {
         
             Document doc = new Document();
             doc.add(new Field("reviewerID", review.getReviewerID(), _contentFieldType));//the author field is searchable
+            doc.add(new Field("asin", review.getAsin(), _contentFieldType));//the author field is searchable
             doc.add(new Field("reviewerText", review.getReviewerText(), _contentFieldType));//the content field is searchable
             writer.addDocument(doc);
 

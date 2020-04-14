@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.Map.Entry;
+import amazon.evaluator.Evaluate;
 
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -20,15 +21,22 @@ import amazon.index.Searcher;
 import amazon.searcher.DocSearcher;
 
 public class Main {
-
+	final static String _dataset = "npl";
+	final static String _indexPath = "lucene-npl-index";
+	final static String _prefix = "data/";
+	final static String _file = "npl.txt";
+	final static String _judgment = "npl-judgements.txt";
+	final static String asin = "0739079891";
 	//The main entrance to test various functions 
 	public static void main(String[] args) {
+
 		try {
+
+
 			long currentTime = System.currentTimeMillis();
 			DocAnalyzer analyzer = new DocAnalyzer("data/models/en-token.bin");
-			analyzer.LoadDirectory("data/amazon", ".json");
-			long timeElapsed = System.currentTimeMillis() - currentTime;
-			System.out.println(timeElapsed/1000);
+			analyzer.LoadDirectory("data/amazon", ".json", asin);
+
 //			HashMap<String, Integer> dict = analyzer.getCorpus().getDictionary(); 
 //			PrintStream standard = System.out;
 //			PrintStream o = new PrintStream(new File("P.txt")); 
@@ -51,13 +59,13 @@ public class Main {
 
 			//create inverted index
 //			Indexer.index("data/indices", analyzer.getCorpus());
-////			search in the inverted index
+//			search in the inverted index
 //
 //			PrintStream o = new PrintStream(new File("Index.txt"));
 //	        System.setOut(o);
 //
 //			IndexReader reader = DirectoryReader.open(FSDirectory.open(new File("data/indices")));//using your own index path
-//			Terms terms = MultiFields.getTerms(reader, "content");//get reference to all the indexed terms in the content field
+//			Terms terms = MultiFields.getTerms(reader, "reviewerText");//get reference to all the indexed terms in the content field
 //			TermsEnum termsEnum = terms.iterator(null);
 //			ArrayList<Integer> docFreq = new ArrayList<>();
 //			ArrayList<Long> TTF = new ArrayList<>();
@@ -69,8 +77,9 @@ public class Main {
 //			Collections.sort(docFreq, Collections.reverseOrder());
 //			Collections.sort(TTF, Collections.reverseOrder());
 ////	        System.setOut(standard);
-//			long timeElapsed = System.currentTimeMillis() - currentTime;
-//			System.out.println(timeElapsed/1000);
+//			new Evaluate().evaluate("--ok", _prefix + _indexPath, _prefix + _judgment);;
+			long timeElapsed = System.currentTimeMillis() - currentTime;
+			System.out.println(timeElapsed/1000);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
