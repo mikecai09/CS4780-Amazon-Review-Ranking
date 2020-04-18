@@ -75,7 +75,7 @@ public class DocAnalyzer extends TextAnalyzer {
 			while ((sCurrentLine = br.readLine()) != null) {
 				try {
 					JSONObject review = new JSONObject(sCurrentLine);
-					if(review.getString("asin").equals(asin)) {
+					if(asin==null||review.getString("asin").equals(asin)) {
 						ReviewDoc doc = new ReviewDoc(review.getString("asin"), review.getString("reviewerID"));
 						try {
 							doc.setImage(review.getStringArray("image").length);
@@ -86,7 +86,7 @@ public class DocAnalyzer extends TextAnalyzer {
 						try {
 							doc.setVote(review.getString("vote"));
 						} catch (JSONException e) {
-							doc.setVote("");
+							doc.setVote("0");
 						}
 						doc.setVerified(review.getBoolean("verified"));
 						try {
@@ -94,19 +94,25 @@ public class DocAnalyzer extends TextAnalyzer {
 						} catch (JSONException e) {
 							doc.setReviewerName("");
 						}
-						try {
-							doc.setReviewerText(review.getString("reviewerText"));
-							doc.setBoW(tokenize(review.getString("reviewerText")));
-						} catch (JSONException e) {
-							doc.setReviewerText("");
+						try{
+							doc.setReviewText(review.getString("reviewText"));
 						}
-						try {
+						catch(JSONException e){
+							doc.setReviewText("");
+						}
+						try{
 							doc.setSummary(review.getString("summary"));
-						} catch (JSONException e) {
+						}
+						catch(JSONException e){
 							doc.setSummary("");
 						}
-						System.out.println(doc.getSummary());
-
+						if((doc.getReviewText()+doc.getSummary()).length() != 0){
+							doc.setBoW(tokenize((doc.getReviewText()+" "+doc.getSummary())));
+						}
+						else{
+							doc.setBoW(tokenize(""));
+						}
+//						doc.setBoW(new String[]{review.getString("reviewerID")});
 						doc.setUnixreviewtime(review.getLong("unixReviewTime"));
 
 						m_corpus.addDoc(doc);

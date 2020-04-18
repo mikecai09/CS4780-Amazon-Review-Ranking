@@ -1,9 +1,6 @@
 package amazon.index;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+import java.util.*;
 /**
  * Represents results returned by Lucene. Includes the list of search result
  * objects, the original query, and the highlighted snippets.
@@ -32,7 +29,7 @@ public class SearchResult {
      * @param totalHits
      */
     public SearchResult(SearchQuery searchQuery, int totalHits) {
-        this.results = new ArrayList<ResultDoc>();
+        results = new ArrayList<ResultDoc>();
         this.totalHits = totalHits;
         this.searchQuery = searchQuery;
         htmlSnippets = new HashMap<Integer, String>();
@@ -89,19 +86,19 @@ public class SearchResult {
      * @param from
      * @param to
      */
-    public void trimResults(int from) {
-        // bounds checking
-        if (from >= results.size()) {
-            results = new ArrayList<ResultDoc>();
-            return;
-        }
-
-        int to = results.size();
-
-        // trimming
-        List<ResultDoc> newResults = results.subList(from, to);
-        results = new ArrayList<ResultDoc>(newResults);
-    }
+//    public void trimResults(int from) {
+//        // bounds checking
+//        if (from >= results.size()) {
+//            results = new PriorityQueue<ResultDoc>((ResultDoc a, ResultDoc b)->(b.score()-a.score()>0?1:-1));
+//            return;
+//        }
+//
+//        int to = results.size();
+//
+//        // trimming
+//        List<ResultDoc> newResults = results.subList(from, to);
+//        results = new ArrayList<ResultDoc>(newResults);
+//    }
 
     /**
      * Tells whether two objects are both SearchQueries with equal contents.

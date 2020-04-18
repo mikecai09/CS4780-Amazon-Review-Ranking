@@ -69,9 +69,18 @@ public class Indexer {
         	ReviewDoc review = corpus.getDoc(i);
         
             Document doc = new Document();
+            doc.add(new Field("content", review.getReviewText()+" "+review.getSummary(), _contentFieldType));//the content field is searchable
             doc.add(new Field("reviewerID", review.getReviewerID(), _contentFieldType));//the author field is searchable
             doc.add(new Field("asin", review.getAsin(), _contentFieldType));//the author field is searchable
-            doc.add(new Field("reviewerText", review.getReviewerText(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("reviewText", review.getReviewText(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("summary", review.getSummary(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("image", ""+review.getImage(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("overall", ""+review.getOverall(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("vote", review.getVote(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("verified", ""+review.isVerified(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("reviewTime", ""+review.getUnixreviewtime(), _contentFieldType));//the content field is searchable
+            doc.add(new Field("reviewerName", ""+review.getReviewerName(), _contentFieldType));//the content field is searchable
+
             writer.addDocument(doc);
 
             if (i % 1000 == 0)

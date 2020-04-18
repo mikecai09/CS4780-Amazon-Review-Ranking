@@ -18,7 +18,7 @@ public class ReviewDoc {
 	String m_reviewerID;
 	String m_asin;
 	String m_reviewerName;
-	String m_reviewerText;
+	String m_reviewText;
 	String m_summary;
 	long m_unixreviewtime;
 	
@@ -89,12 +89,12 @@ public class ReviewDoc {
 		this.m_reviewerName = m_reviewerName;
 	}
 
-	public String getReviewerText() {
-		return m_reviewerText;
+	public String getReviewText() {
+		return m_reviewText;
 	}
 
-	public void setReviewerText(String m_reviewerText) {
-		this.m_reviewerText = m_reviewerText;
+	public void setReviewText(String m_reviewerText) {
+		this.m_reviewText = m_reviewerText;
 	}
 
 	public String getSummary() {
