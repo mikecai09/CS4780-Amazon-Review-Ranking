@@ -8,6 +8,9 @@ import java.util.*;
 public class SearchResult {
     private ArrayList<ResultDoc> results;
     private int totalHits;
+    public float avgSenti;
+    public float avgLen;
+    public float avgVote;
     private SearchQuery searchQuery;
     private HashMap<Integer, String> htmlSnippets; // map id to highlighted
                                                     // string

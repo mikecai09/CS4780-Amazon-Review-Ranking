@@ -18,8 +18,11 @@ public class TFIDFDotProduct extends SimilarityBase {
      *            Document length
      */
     @Override
-    protected float score(BasicStats stats, float termFreq, float docLength) {
-        return (float) ((1+Math.log10(termFreq))*Math.log10((((float)(1+stats.getNumberOfDocuments())))/(stats.getDocFreq())));
+    protected float score(BasicStats stats, float termFreq, float docLength) {    	
+    	double s = 0.5;
+    	double tfln = (termFreq)/(termFreq + s + (s*docLength)/(stats.getAvgFieldLength()));
+    	double lw = Math.log((stats.getNumberOfDocuments()+1)/(stats.getDocFreq()));
+    	return (float)(tfln*lw);
     }
 
     @Override

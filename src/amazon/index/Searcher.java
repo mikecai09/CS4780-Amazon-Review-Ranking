@@ -2,8 +2,18 @@ package amazon.index;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.*;
 import amazon.index.similarities.*;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.util.PropertiesUtils.Property;
+
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -23,6 +33,8 @@ import org.apache.lucene.search.similarities.BM25Similarity;
 import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.ejml.simple.SimpleMatrix;
+
 
 public class Searcher
 {
@@ -30,6 +42,8 @@ public class Searcher
     private SpecialAnalyzer analyzer;
     private static SimpleHTMLFormatter formatter;
     private static final int numFragments = 4;
+//    private StanfordCoreNLP nlp;
+    
     private static final ArrayList<String> defaultField = new ArrayList<String>(){
         {
             add("content");
@@ -49,7 +63,10 @@ public class Searcher
             IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(indexPath)));
             indexSearcher = new IndexSearcher(reader);
             analyzer = new SpecialAnalyzer();
-            formatter = new SimpleHTMLFormatter("****", "****");           
+            formatter = new SimpleHTMLFormatter("****", "****");    
+//            Properties properties = new Properties();
+//            properties.setProperty("annotators","tokenize, ssplit, parse, sentiment");
+//            nlp = new StanfordCoreNLP(properties);       
             
             indexSearcher.setSimilarity(new BM25Similarity());//using default BM25 formula
         }
@@ -123,6 +140,7 @@ public class Searcher
             ScoreDoc[] hits = docs.scoreDocs;
 //            String title = searchQuery.fields().get(1);
             SearchResult searchResult = new SearchResult(searchQuery, docs.totalHits);
+            float totSent = 0, totLen = 0, totVote = 0;
 
             //This is used to track which documents were retrieved by original query
             HashSet<String> hitdocs = new HashSet<>();
@@ -147,8 +165,26 @@ public class Searcher
                     rdoc.summary(doc.getField("summary").stringValue());
                     rdoc.reviewText(doc.getField("reviewText").stringValue());
                     rdoc.reviewTime(Long.parseLong(doc.getField("reviewTime").stringValue()));
-                    rdoc.score(Score(hit.score, rdoc.reviewerID(),rdoc.overall(),rdoc.image(), rdoc.vote(), rdoc.verified(), rdoc.reviewTime()));
+                    rdoc.relevancy(hit.score);
+                    
+                    String txt = doc.getField("content").stringValue();
+//                    Annotation annotation = nlp.process(txt);
+//                    float sent = 0,count = 0;
+//                    for(CoreMap sentence: annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
+//                    	Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+//                    	//SimpleMatrix simpleMatrix = RNNCoreAnnotations.getPredictions(tree);
+//                    	sent += RNNCoreAnnotations.getPredictedClass(tree);
+//                    	count++;
+//                    }
+//                    sent /= count;
+                    float sent = Float.parseFloat(doc.getField("Sentiment").stringValue());
+                    totSent += sent;
+                    totLen += txt.length();
+                    totVote += rdoc.vote();
+                    rdoc.senti(sent);
 
+                    rdoc.len(txt.length());
+                    //rdoc.score(Score(hit.score, rdoc.reviewerID(),rdoc.overall(),rdoc.image(), rdoc.vote(), rdoc.verified(), rdoc.reviewTime(), sent));
                     hitdocs.add(rdoc.reviewerID()+rdoc.reviewTime()); //Maybe review time is enough to uniquely identify each review doc
                     String[] snippets = highlighter.getBestFragments(analyzer, searchQuery.fields().get(0), doc.getField("reviewText").stringValue(), numFragments);
                     highlighted = createOneSnippet(snippets);
@@ -186,8 +222,26 @@ public class Searcher
                         rdoc.summary(doc.getField("summary").stringValue());
                         rdoc.reviewText(doc.getField("reviewText").stringValue());
                         rdoc.reviewTime(Long.parseLong(doc.getField("reviewTime").stringValue()));
-                        rdoc.score(Score(0, rdoc.reviewerID(), rdoc.overall(), rdoc.image(), rdoc.vote(), rdoc.verified(), rdoc.reviewTime()));
+                        rdoc.relevancy(0);
 
+                        String txt = doc.getField("content").stringValue();
+//                      Annotation annotation = nlp.process(txt);
+//                      float sent = 0,count = 0;
+//                      for(CoreMap sentence: annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
+//                      	Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+//                      	//SimpleMatrix simpleMatrix = RNNCoreAnnotations.getPredictions(tree);
+//                      	sent += RNNCoreAnnotations.getPredictedClass(tree);
+//                      	count++;
+//                      }
+//                      sent /= count;
+                        float sent = Float.parseFloat(doc.getField("Sentiment").stringValue());
+                        totSent += sent;
+                        totLen += txt.length();
+                        totVote += rdoc.vote();
+                        rdoc.senti(sent);
+ 
+                        rdoc.len(txt.length());
+                        //rdoc.score(Score(0, rdoc.reviewerID(),rdoc.overall(),rdoc.image(), rdoc.vote(), rdoc.verified(), rdoc.reviewTime(), sent));
                         String[] snippets = highlighter.getBestFragments(analyzer, searchQuery.fields().get(0), doc.getField("reviewText").stringValue(), numFragments);
                         highlighted = createOneSnippet(snippets);
                     }
@@ -201,6 +255,14 @@ public class Searcher
                     searchResult.setSnippet(rdoc, highlighted);
                 }
             }
+            searchResult.avgSenti = totSent/hits.length;
+            System.out.println("Average sentiment score: " + searchResult.avgSenti);
+            searchResult.avgLen = totLen/hits.length;
+            searchResult.avgVote = totVote/hits.length;
+            for(ResultDoc rdoc: searchResult.getDocs()) {
+            	rdoc.score(Score(rdoc.relevancy(), rdoc.reviewerID(), rdoc.image(), rdoc.vote(), rdoc.verified(), rdoc.reviewTime(), rdoc.senti(), searchResult.avgSenti, searchResult.avgLen, rdoc.len(), searchResult.avgVote));
+            }
+            
             return searchResult;
         }
         catch(IOException exception)
@@ -214,12 +276,38 @@ public class Searcher
      * @param snippets
      * @return
      */
-    private float Score(float score, String reviewerID, double overall, int image, int vote, boolean verified, long reviewTime){
+    private float Score(float score, String reviewerID, int image, int vote, boolean verified, long reviewTime, float sentiment, float avgSent, float avgLen, float reviewLen, float avgVote){
         SearchResult userInfo = SearchUser(reviewerID);
         /**
          * TODO: Customize score function
          */
-        return score;
+        float votes = 0;
+        for(ResultDoc i : userInfo.getDocs()) {
+        	votes += i.vote();
+        }
+//        if(userInfo.getDocs().size() != 0)
+//        	votes/=userInfo.getDocs().size();
+        System.out.println("AvgVote: " + votes);
+        float credibility = (float)Math.log(Math.log(votes+1)+1)+1;
+        double timeDiff = Math.log((Instant.now().getEpochSecond() - reviewTime)/2592000);
+        float is_verified = (float) 0.1;
+        if(verified) is_verified = 1;
+        
+//        System.out.println("timeDiff: " + timeDiff);
+        System.out.println("Credi: " + credibility);
+        System.out.println("ID: " + reviewerID);
+//        System.out.println("Vote: " + 0.05*vote);
+//        System.out.println("rele: " + 0.25*score);
+//        System.out.println("Length: " + 0.4*(reviewLen/avgLen));
+//        System.out.println("Senti: " + 0.3/(1+Math.abs(sentiment-avgSent)) );
+        
+        
+        
+        double ret = timeDiff * is_verified * (credibility*(0.4*(reviewLen/avgLen) + 
+        		0.3*(2/(1+Math.abs(sentiment-avgSent))) + 0.05*(vote/avgVote) + 0.25*score)
+        		+ Math.log(1+image));
+        System.out.println("Final Score: " + ret);
+        return (float) ret;
     }
 
     private SearchResult SearchUser(String reviewerID){
@@ -247,9 +335,11 @@ public class Searcher
 
                 d.image(Integer.parseInt(temp.getField("image").stringValue()));
                 d.overall(Double.parseDouble(temp.getField("overall").stringValue()));
-                d.vote(temp.getField("vote").stringValue().equals("")?0:Integer.parseInt(temp.getField("vote").stringValue()));
+                d.vote(temp.getField("vote").stringValue().equals("")?0:Integer.parseInt(temp.getField("vote").stringValue().replaceAll(",", "")));
                 d.verified(Boolean.parseBoolean(temp.getField("verified").stringValue()));
                 d.reviewerID(temp.getField("reviewerID").stringValue());
+                
+                userinfo.addResult(d);
             }
             return userinfo;
         }

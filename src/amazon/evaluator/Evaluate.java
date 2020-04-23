@@ -58,11 +58,23 @@ public class Evaluate {
 		_searcher = new Searcher(indexPath);
 		setSimilarity(_searcher, method);
 		ArrayList<ResultDoc> results = _searcher.search(query).getDocs();
+		Collections.sort(results, new Comparator<ResultDoc>() {
+			@Override
+			public int compare(ResultDoc a, ResultDoc b) {
+				return a.score()-b.score()>0?-1:1;
+			}
+		});
 		System.out.println("\nQuery: " + query);
 
 		int i = 1;
 		for(ResultDoc rdoc:results){
 			System.out.println(i + ". Summary: " + rdoc.summary());
+			System.out.println("   Review Text: "+rdoc.reviewText());
+			System.out.println("   Verified: "+rdoc.verified());
+			System.out.println("   Sentiment Score: "+rdoc.senti());
+			System.out.println("   Relevancy score: "+rdoc.relevancy());
+	        System.out.println("   ID: " + rdoc.reviewerID());
+	        System.out.println("   Image: " + rdoc.image());
 			System.out.println("   Score: "+rdoc.score());
 			i++;
 		}

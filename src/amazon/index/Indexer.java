@@ -2,6 +2,7 @@ package amazon.index;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -13,6 +14,13 @@ import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.CoreMap;
 import structures.Corpus;
 import structures.ReviewDoc;
 
@@ -62,6 +70,10 @@ public class Indexer {
         _contentFieldType.setIndexed(true);
         _contentFieldType.setStored(true);
 
+        Properties properties = new Properties();
+        properties.setProperty("annotators","tokenize, ssplit, parse, sentiment");
+        StanfordCoreNLP nlp = new StanfordCoreNLP(properties);  
+        
         IndexWriter writer = setupIndex(indexPath);
         int i;
         
@@ -80,10 +92,22 @@ public class Indexer {
             doc.add(new Field("verified", ""+review.isVerified(), _contentFieldType));//the content field is searchable
             doc.add(new Field("reviewTime", ""+review.getUnixreviewtime(), _contentFieldType));//the content field is searchable
             doc.add(new Field("reviewerName", ""+review.getReviewerName(), _contentFieldType));//the content field is searchable
-
+            
+            String txt = doc.getField("content").stringValue();
+            Annotation annotation = nlp.process(txt);
+            float sent = 0,count = 0;
+            for(CoreMap sentence: annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
+            	Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+            	//SimpleMatrix simpleMatrix = RNNCoreAnnotations.getPredictions(tree);
+            	sent += RNNCoreAnnotations.getPredictedClass(tree);
+            	count++;
+            }
+            sent /= count;
+            doc.add(new Field("Sentiment", ""+sent, _contentFieldType));
+            
             writer.addDocument(doc);
 
-            if (i % 1000 == 0)
+            if (i % 1 == 0)
                 System.out.println(" -> indexed " + i + " docs...");
         }
         System.out.println(" -> indexed " + i + " total docs.");

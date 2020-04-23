@@ -15,6 +15,9 @@ public class ResultDoc {
     private String _reviewText = "";
     private long _unixreviewtime = 0;
     private float score = 0;
+    private float relevancy = 0;
+    private float senti = 0;
+    private float len = 0;
 
     public ResultDoc(int id) {
         _id = id;
@@ -68,12 +71,23 @@ public class ResultDoc {
 
     public void reviewText(String t){_reviewText = t;}
 
+    public float relevancy(){return relevancy;}
+
+    public void relevancy(float t){relevancy = t;}
+    
+    public float len(){return len;}
+
+    public void len(float t){len = t;}
+
     public long reviewTime(){return _unixreviewtime;}
 
     public void reviewTime(long t){_unixreviewtime = t;}
     public float score(){
         return score;
     }
+    public float senti(){return senti;}
+
+    public void senti(float s){senti = s;}
 
     public void score(float _score){
         score = _score;

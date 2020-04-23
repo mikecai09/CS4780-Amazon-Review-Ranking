@@ -24,7 +24,7 @@ import amazon.searcher.DocSearcher;
 public class Main {
 	final static String _dataset = "npl";
 	final static String _prefix = "data/";
-	final static String asin = "0739079891";
+	final static String asin = "B000165DSM";
 //	final static String asin = null;
 
 	//The main entrance to test various functions 
@@ -41,7 +41,7 @@ public class Main {
 			e.search("--tfidf","data/indices","great product music very nice");
 
 			long timeElapsed = System.currentTimeMillis() - currentTime;
-			System.out.println(timeElapsed/1000);
+			System.out.println(timeElapsed/1000 + " secs");
 //			deleteDir(new File("data/indices"));
 		} catch (IOException e) {
 			e.printStackTrace();
